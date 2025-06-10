@@ -1,5 +1,6 @@
 import { NextResponse } from 'next/server';
 import nodemailer from 'nodemailer';
+import { senderTemplate, adminTemplate } from '@/app/utils/emailTemplates';
 
 export async function POST(request: Request) {
   try {
@@ -13,18 +14,21 @@ export async function POST(request: Request) {
       },
     });
 
+    // Send confirmation to sender
     await transporter.sendMail({
       from: process.env.EMAIL_USER,
-      to: process.env.EMAIL_USER, // Send to yourself
+      to: email,
+      subject: 'Thanks for Contacting Beggar Online',
+      html: senderTemplate(name),
+    });
+
+    // Send notification to admin
+    await transporter.sendMail({
+      from: process.env.EMAIL_USER,
+      to: process.env.EMAIL_USER,
       replyTo: email,
       subject: `Contact Form: ${subject}`,
-      text: `
-        Name: ${name}
-        Email: ${email}
-        
-        Message:
-        ${message}
-      `,
+      html: adminTemplate(name, email, subject, message),
     });
 
     return NextResponse.json({ success: true });
