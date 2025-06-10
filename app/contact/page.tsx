@@ -27,7 +27,8 @@ export default function Contact() {
       if (!res.ok) throw new Error('Failed to send message');
       setStatus('success');
       (e.target as HTMLFormElement).reset();
-    } catch (error) {
+    } catch (error: unknown) {
+      console.error('Contact form error:', error);
       setStatus('error');
     }
   }

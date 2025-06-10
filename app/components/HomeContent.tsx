@@ -28,7 +28,7 @@ export default function HomeContent() {
         <nav className="fixed top-0 left-0 right-0 z-50 bg-[#1a1c2e]/80 backdrop-blur-lg border-b border-white/10">
           <div className="container mx-auto px-4 py-4">
             <div className="flex items-center justify-between">
-              <a href="/" className="flex items-center gap-2">
+              <Link href="/" className="flex items-center gap-2">
                 <Image
                   src="/img/icon.png"
                   alt="Beggar Online"
@@ -37,7 +37,7 @@ export default function HomeContent() {
                   className="rounded-xl"
                 />
                 <span className="font-bold text-xl">Beggar Online</span>
-              </a>
+              </Link>
               
               {/* Desktop Menu */}
               <div className="hidden md:flex items-center gap-8">

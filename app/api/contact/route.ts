@@ -1,18 +1,35 @@
 import { NextResponse } from 'next/server';
-import nodemailer from 'nodemailer';
+import nodemailer, { TransportOptions } from 'nodemailer';
 import { senderTemplate, adminTemplate } from '@/app/utils/emailTemplates';
+
+interface ContactFormData {
+  name: string;
+  email: string;
+  subject: string;
+  message: string;
+}
+
+interface MailConfig {
+  service: string;
+  auth: {
+    user: string | undefined;
+    pass: string | undefined;
+  };
+}
 
 export async function POST(request: Request) {
   try {
-    const { name, email, subject, message } = await request.json();
+    const { name, email, subject, message }: ContactFormData = await request.json();
 
-    const transporter = nodemailer.createTransport({
+    const mailConfig: MailConfig = {
       service: 'gmail',
       auth: {
         user: process.env.EMAIL_USER,
         pass: process.env.EMAIL_PASS,
       },
-    });
+    };
+
+    const transporter = nodemailer.createTransport(mailConfig as TransportOptions);
 
     // Send confirmation to sender
     await transporter.sendMail({
