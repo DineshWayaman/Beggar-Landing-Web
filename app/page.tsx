@@ -71,7 +71,6 @@ export default function Home() {
                 rel="noopener noreferrer"
                 className="bg-gradient-to-r from-yellow-500 to-amber-600 text-black font-bold py-3 px-6 rounded-xl transform hover:scale-105 transition-all duration-300 shadow-lg shadow-yellow-500/20 text-center w-full"
               >
-                Play Now
               </Link>
             </div>
           </div>
