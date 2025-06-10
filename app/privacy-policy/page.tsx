@@ -17,7 +17,7 @@ export default function PrivacyPolicy() {
           <div className="space-y-8 text-gray-300">
             <section className="bg-white/5 backdrop-blur-sm p-6 rounded-2xl border border-white/10">
               <h2 className="text-2xl font-bold text-yellow-400 mb-4">Information We Collect</h2>
-              <p className="mb-4">At the moment, We don't collect information.</p>
+              <p className="mb-4">At the moment, We don&apos;t collect information.</p>
             
             </section>
 
