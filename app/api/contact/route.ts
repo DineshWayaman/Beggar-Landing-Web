@@ -1,6 +1,6 @@
 import { NextResponse } from 'next/server';
 import nodemailer, { TransportOptions } from 'nodemailer';
-import { senderTemplate, adminTemplate } from '@/app/utils/emailTemplates';
+import { senderTemplate, adminTemplate } from '../../utils/emailTemplates';
 
 interface ContactFormData {
   name: string;
