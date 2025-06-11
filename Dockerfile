@@ -2,12 +2,13 @@ FROM node:18-alpine
 
 WORKDIR /app
 
-# Install dependencies
+# Copy package files
 COPY package*.json ./
 RUN npm install
 
-# Copy source code
+# Copy source and env files
 COPY . .
+COPY .env.local .env.local
 
 # Build the application
 RUN npm run build
@@ -15,8 +16,9 @@ RUN npm run build
 # Expose port 3001
 EXPOSE 3001
 
-# Set the environment variable for the port
+# Set environment variables
 ENV PORT=3001
+ENV NODE_ENV=production
 
 # Start the application
 CMD ["npm", "start"]
